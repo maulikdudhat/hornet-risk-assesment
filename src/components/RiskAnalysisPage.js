@@ -473,8 +473,8 @@ const CryptoTransactionAnalysis = ({ data }) => {
 
     return (
         <div className="bg-gray-900 font-['Inter'] min-h-screen">
-            <div className="max-w-8xl mx-auto px-2 sm:px-4 py-4 sm:py-8">
-                <div className="bg-gray-800 rounded-lg shadow-sm p-6 mb-6">
+            <div className="max-w-8xl mx-auto">
+                <div className="bg-gray-800 rounded-lg shadow-sm p-6">
                     <div className="flex flex-col md:flex-row items-center justify-between mb-6 gap-4">
                         <div className='p-4'>
                             <div className="loading-skeleton hidden">
@@ -483,7 +483,7 @@ const CryptoTransactionAnalysis = ({ data }) => {
                                 <div className="h-4 bg-gray-700 rounded animate-pulse w-1/2"></div>
                             </div>
                             <div className="flex flex-col sm:flex-row items-center space-y-2 sm:space-y-0 sm:space-x-0 mb-4 w-full">
-                                <span className="text-gray-300">Enter Source Address:</span>
+                                <span className="text-gray-300">Select Source Address:</span>
                                 {/* <input
                                     type="text"
                                     className="flex-1 border border-gray-700 bg-gray-700 text-white rounded-md px-3 py-1 focus:outline-none focus:ring-2 focus:ring-custom"
@@ -498,7 +498,7 @@ const CryptoTransactionAnalysis = ({ data }) => {
                                 </button> */}
 
                                 <select
-                                    className="flex-1 border border-gray-700 bg-gray-700 text-white rounded-md px-3 py-1 focus:outline-none focus:ring-2 focus:ring-custom"
+                                    className="w-full sm:w-auto min-w-[150px] sm:min-w-[200px] border border-gray-700 bg-gray-700 text-white rounded-md px-3 py-1 focus:outline-none focus:ring-2 focus:ring-custom appearance-none"
                                     onChange={(e) => handleSourceChange(data[e.target.value])}
                                 >
                                     {data.map((source, index) => (
@@ -514,13 +514,13 @@ const CryptoTransactionAnalysis = ({ data }) => {
                                 <div className="flex flex-col sm:flex-row items-start sm:items-center space-y-2 sm:space-y-0 sm:space-x-2">
                                     <span className="text-gray-300">Source Address:</span>
                                     <code className="bg-gray-700 px-3 py-1 rounded text-sm text-white">{selectedSource.source_address}</code>
-                                    <button className="text-custom hover:text-custom/80 !rounded-button">
+                                    {/* <button className="text-custom hover:text-custom/80 !rounded-button">
                                         <i className="far fa-copy"></i>
-                                    </button>
+                                    </button> */}
                                 </div>
                             )}
                         </div>
-                        {selectedSource && (
+                        {selectedSource && !loading && (
                             <div className="text-center">
                                 <div ref={riskGaugeRef} style={{ width: '200px', height: '300px' }}></div>
                                 <div className="mt-2">
