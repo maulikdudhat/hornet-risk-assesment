@@ -1,6 +1,6 @@
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import RiskAnalysisPage from "./components/RiskAnalysisPage"
-import RiskAnalysisPage2 from "./components/RiskAnalysisPage2"
+// import RiskAnalysisPage2 from "./components/RiskAnalysisPage2"
 import './App.css';
 
 const data = [

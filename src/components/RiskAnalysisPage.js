@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import * as echarts from 'echarts';
 
 const CryptoTransactionAnalysis = ({ data }) => {
-    const [searchQuery, setSearchQuery] = useState('');
+    // const [searchQuery, setSearchQuery] = useState('');
     const [selectedSource, setSelectedSource] = useState(data[0]);
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
@@ -10,227 +10,227 @@ const CryptoTransactionAnalysis = ({ data }) => {
     const entityChartRef = useRef(null);
     const transactionChartRef = useRef(null);
 
-    const initializeCharts = (foundSource) => {
-        console.log('Initializing charts...');
+    // const initializeCharts = (foundSource) => {
+    //     console.log('Initializing charts...');
 
-        console.log(riskGaugeRef.current, "riskGaugeRef.current")
-        console.log(entityChartRef.current, "entityChartRef.current")
-        console.log(transactionChartRef.current, "transactionChartRef.current")
+    //     console.log(riskGaugeRef.current, "riskGaugeRef.current")
+    //     console.log(entityChartRef.current, "entityChartRef.current")
+    //     console.log(transactionChartRef.current, "transactionChartRef.current")
 
-        // Ensure DOM elements are available
-        if (riskGaugeRef.current && entityChartRef.current && transactionChartRef.current) {
-            // Dispose existing chart instances to avoid memory leaks
-            echarts.getInstanceByDom(riskGaugeRef.current);
-            echarts.getInstanceByDom(entityChartRef.current);
-            echarts.getInstanceByDom(transactionChartRef.current);
+    //     // Ensure DOM elements are available
+    //     if (riskGaugeRef.current && entityChartRef.current && transactionChartRef.current) {
+    //         // Dispose existing chart instances to avoid memory leaks
+    //         echarts.getInstanceByDom(riskGaugeRef.current);
+    //         echarts.getInstanceByDom(entityChartRef.current);
+    //         echarts.getInstanceByDom(transactionChartRef.current);
 
-            // Initialize new chart instances
-            const riskGauge = echarts.init(riskGaugeRef.current);
-            const entityChart = echarts.init(entityChartRef.current);
-            const transactionChart = echarts.init(transactionChartRef.current);
+    //         // Initialize new chart instances
+    //         const riskGauge = echarts.init(riskGaugeRef.current);
+    //         const entityChart = echarts.init(entityChartRef.current);
+    //         const transactionChart = echarts.init(transactionChartRef.current);
 
-            // Resize charts on window resize
-            const resizeCharts = () => {
-                riskGauge.resize();
-                entityChart.resize();
-                transactionChart.resize();
-            };
-            window.addEventListener('resize', resizeCharts);
+    //         // Resize charts on window resize
+    //         const resizeCharts = () => {
+    //             riskGauge.resize();
+    //             entityChart.resize();
+    //             transactionChart.resize();
+    //         };
+    //         window.addEventListener('resize', resizeCharts);
 
-            // Risk Gauge Chart
-            riskGauge.setOption({
-                animation: true,
-                series: [{
-                    type: 'gauge',
-                    startAngle: 180,
-                    endAngle: 0,
-                    min: 0,
-                    max: 100,
-                    splitNumber: 8,
-                    axisLine: {
-                        lineStyle: {
-                            width: 6,
-                            color: [
-                                [parseFloat(foundSource.risk_score) / 100 || 20, '#FF4B55'],
-                                [1, '#4B5563']
-                            ]
-                        }
-                    },
-                    pointer: {
-                        icon: 'path://M12.8,0.7l12,40.1H0.7L12.8,0.7z',
-                        length: '12%',
-                        width: 20,
-                        offsetCenter: [0, '-60%'],
-                        itemStyle: {
-                            color: '#FF4B55'
-                        }
-                    },
-                    axisTick: {
-                        length: 12,
-                        lineStyle: {
-                            color: '#9CA3AF',
-                            width: 2
-                        }
-                    },
-                    splitLine: {
-                        length: 20,
-                        lineStyle: {
-                            color: '#9CA3AF',
-                            width: 3
-                        }
-                    },
-                    axisLabel: {
-                        color: '#9CA3AF',
-                        fontSize: 12,
-                        distance: -60
-                    },
-                    title: {
-                        offsetCenter: [0, '-20%'],
-                        fontSize: 20,
-                        color: '#fff'
-                    },
-                    detail: {
-                        fontSize: 30,
-                        offsetCenter: [0, '0%'],
-                        valueAnimation: true,
-                        formatter: '{value}%',
-                        color: '#fff'
-                    },
-                    data: [{
-                        value: parseFloat(foundSource.risk_score)
-                    }]
-                }]
-            });
+    //         // Risk Gauge Chart
+    //         riskGauge.setOption({
+    //             animation: true,
+    //             series: [{
+    //                 type: 'gauge',
+    //                 startAngle: 180,
+    //                 endAngle: 0,
+    //                 min: 0,
+    //                 max: 100,
+    //                 splitNumber: 8,
+    //                 axisLine: {
+    //                     lineStyle: {
+    //                         width: 6,
+    //                         color: [
+    //                             [parseFloat(foundSource.risk_score) / 100 || 20, '#FF4B55'],
+    //                             [1, '#4B5563']
+    //                         ]
+    //                     }
+    //                 },
+    //                 pointer: {
+    //                     icon: 'path://M12.8,0.7l12,40.1H0.7L12.8,0.7z',
+    //                     length: '12%',
+    //                     width: 20,
+    //                     offsetCenter: [0, '-60%'],
+    //                     itemStyle: {
+    //                         color: '#FF4B55'
+    //                     }
+    //                 },
+    //                 axisTick: {
+    //                     length: 12,
+    //                     lineStyle: {
+    //                         color: '#9CA3AF',
+    //                         width: 2
+    //                     }
+    //                 },
+    //                 splitLine: {
+    //                     length: 20,
+    //                     lineStyle: {
+    //                         color: '#9CA3AF',
+    //                         width: 3
+    //                     }
+    //                 },
+    //                 axisLabel: {
+    //                     color: '#9CA3AF',
+    //                     fontSize: 12,
+    //                     distance: -60
+    //                 },
+    //                 title: {
+    //                     offsetCenter: [0, '-20%'],
+    //                     fontSize: 20,
+    //                     color: '#fff'
+    //                 },
+    //                 detail: {
+    //                     fontSize: 30,
+    //                     offsetCenter: [0, '0%'],
+    //                     valueAnimation: true,
+    //                     formatter: '{value}%',
+    //                     color: '#fff'
+    //                 },
+    //                 data: [{
+    //                     value: parseFloat(foundSource.risk_score)
+    //                 }]
+    //             }]
+    //         });
 
-            // Entity Analysis Chart
-            const levelData = foundSource.level_vise_risk_analysis[0]; // Use the first level for simplicity
-            entityChart.setOption({
-                animation: false,
-                tooltip: {
-                    trigger: 'axis',
-                    axisPointer: {
-                        type: 'shadow'
-                    }
-                },
-                legend: {
-                    data: ['Risky', 'Non-Risky'],
-                    textStyle: {
-                        color: '#fff'
-                    }
-                },
-                grid: {
-                    left: '3%',
-                    right: '4%',
-                    bottom: '3%',
-                    containLabel: true
-                },
-                xAxis: {
-                    type: 'value',
-                    axisLine: {
-                        lineStyle: {
-                            color: '#4B5563'
-                        }
-                    },
-                    axisLabel: {
-                        color: '#9CA3AF'
-                    }
-                },
-                yAxis: {
-                    type: 'category',
-                    data: [`Level ${levelData.level}`],
-                    axisLine: {
-                        lineStyle: {
-                            color: '#4B5563'
-                        }
-                    },
-                    axisLabel: {
-                        color: '#9CA3AF'
-                    }
-                },
-                series: [
-                    {
-                        name: 'Risky',
-                        type: 'bar',
-                        stack: 'total',
-                        label: {
-                            show: true,
-                            color: '#fff'
-                        },
-                        emphasis: {
-                            focus: 'series'
-                        },
-                        data: [levelData.risky_entities_count],
-                        itemStyle: {
-                            color: '#FF4B55'
-                        }
-                    },
-                    {
-                        name: 'Non-Risky',
-                        type: 'bar',
-                        stack: 'total',
-                        label: {
-                            show: true,
-                            color: '#fff'
-                        },
-                        emphasis: {
-                            focus: 'series'
-                        },
-                        data: [levelData.non_risky_entities_count],
-                        itemStyle: {
-                            color: '#91CC75'
-                        }
-                    }
-                ]
-            });
+    //         // Entity Analysis Chart
+    //         const levelData = foundSource.level_vise_risk_analysis[0]; // Use the first level for simplicity
+    //         entityChart.setOption({
+    //             animation: false,
+    //             tooltip: {
+    //                 trigger: 'axis',
+    //                 axisPointer: {
+    //                     type: 'shadow'
+    //                 }
+    //             },
+    //             legend: {
+    //                 data: ['Risky', 'Non-Risky'],
+    //                 textStyle: {
+    //                     color: '#fff'
+    //                 }
+    //             },
+    //             grid: {
+    //                 left: '3%',
+    //                 right: '4%',
+    //                 bottom: '3%',
+    //                 containLabel: true
+    //             },
+    //             xAxis: {
+    //                 type: 'value',
+    //                 axisLine: {
+    //                     lineStyle: {
+    //                         color: '#4B5563'
+    //                     }
+    //                 },
+    //                 axisLabel: {
+    //                     color: '#9CA3AF'
+    //                 }
+    //             },
+    //             yAxis: {
+    //                 type: 'category',
+    //                 data: [`Level ${levelData.level}`],
+    //                 axisLine: {
+    //                     lineStyle: {
+    //                         color: '#4B5563'
+    //                     }
+    //                 },
+    //                 axisLabel: {
+    //                     color: '#9CA3AF'
+    //                 }
+    //             },
+    //             series: [
+    //                 {
+    //                     name: 'Risky',
+    //                     type: 'bar',
+    //                     stack: 'total',
+    //                     label: {
+    //                         show: true,
+    //                         color: '#fff'
+    //                     },
+    //                     emphasis: {
+    //                         focus: 'series'
+    //                     },
+    //                     data: [levelData.risky_entities_count],
+    //                     itemStyle: {
+    //                         color: '#FF4B55'
+    //                     }
+    //                 },
+    //                 {
+    //                     name: 'Non-Risky',
+    //                     type: 'bar',
+    //                     stack: 'total',
+    //                     label: {
+    //                         show: true,
+    //                         color: '#fff'
+    //                     },
+    //                     emphasis: {
+    //                         focus: 'series'
+    //                     },
+    //                     data: [levelData.non_risky_entities_count],
+    //                     itemStyle: {
+    //                         color: '#91CC75'
+    //                     }
+    //                 }
+    //             ]
+    //         });
 
-            // Transaction Types Chart
-            transactionChart.setOption({
-                animation: false,
-                tooltip: {
-                    trigger: 'item'
-                },
-                legend: {
-                    orient: 'vertical',
-                    left: 'left',
-                    textStyle: {
-                        color: '#fff'
-                    }
-                },
-                series: [
-                    {
-                        type: 'pie',
-                        radius: '50%',
-                        data: [
-                            { value: levelData.total_coinjoin, name: 'CoinJoin' },
-                            { value: levelData.total_flagged, name: 'Flagged' }
-                        ],
-                        emphasis: {
-                            itemStyle: {
-                                shadowBlur: 10,
-                                shadowOffsetX: 0,
-                                shadowColor: 'rgba(0, 0, 0, 0.5)'
-                            }
-                        },
-                        itemStyle: {
-                            color: function (params) {
-                                const colors = ['#FF4B55', '#FAC858'];
-                                return colors[params.dataIndex];
-                            }
-                        },
-                        label: {
-                            color: '#fff'
-                        }
-                    }
-                ]
-            });
+    //         // Transaction Types Chart
+    //         transactionChart.setOption({
+    //             animation: false,
+    //             tooltip: {
+    //                 trigger: 'item'
+    //             },
+    //             legend: {
+    //                 orient: 'vertical',
+    //                 left: 'left',
+    //                 textStyle: {
+    //                     color: '#fff'
+    //                 }
+    //             },
+    //             series: [
+    //                 {
+    //                     type: 'pie',
+    //                     radius: '50%',
+    //                     data: [
+    //                         { value: levelData.total_coinjoin, name: 'CoinJoin' },
+    //                         { value: levelData.total_flagged, name: 'Flagged' }
+    //                     ],
+    //                     emphasis: {
+    //                         itemStyle: {
+    //                             shadowBlur: 10,
+    //                             shadowOffsetX: 0,
+    //                             shadowColor: 'rgba(0, 0, 0, 0.5)'
+    //                         }
+    //                     },
+    //                     itemStyle: {
+    //                         color: function (params) {
+    //                             const colors = ['#FF4B55', '#FAC858'];
+    //                             return colors[params.dataIndex];
+    //                         }
+    //                     },
+    //                     label: {
+    //                         color: '#fff'
+    //                     }
+    //                 }
+    //             ]
+    //         });
 
-            return () => {
-                window.removeEventListener('resize', resizeCharts);
-            };
-        } else {
-            console.error('Chart containers not found!');
-        }
-    };
+    //         return () => {
+    //             window.removeEventListener('resize', resizeCharts);
+    //         };
+    //     } else {
+    //         console.error('Chart containers not found!');
+    //     }
+    // };
 
     useEffect(() => {
         const riskGauge = echarts.init(riskGaugeRef.current);
@@ -437,33 +437,34 @@ const CryptoTransactionAnalysis = ({ data }) => {
         };
     }, [selectedSource]);
 
-    const handleSearch = () => {
-        setLoading(true);
-        setError('');
-        const foundSource = data.find(source => source.source_address === searchQuery);
+    // const handleSearch = () => {
+    //     setLoading(true);
+    //     setError('');
+    //     const foundSource = data.find(source => source.source_address === searchQuery);
 
-        if (foundSource) {
-            console.log('Found source:', foundSource);
-            setSelectedSource(foundSource);
+    //     if (foundSource) {
+    //         console.log('Found source:', foundSource);
+    //         setSelectedSource(foundSource);
 
-            setTimeout(() => {
-                initializeCharts(foundSource); // Use foundSource directly
-            }, 1000);
-        } else {
-            console.log('Source not found');
-            setError('Wrong source address added');
-            setSelectedSource(null);
-        }
+    //         setTimeout(() => {
+    //             initializeCharts(foundSource); // Use foundSource directly
+    //         }, 1000);
+    //     } else {
+    //         console.log('Source not found');
+    //         setError('Wrong source address added');
+    //         setSelectedSource(null);
+    //     }
 
-        setTimeout(() => {
-            setLoading(false);
-        }, 3000);
-    };
+    //     setTimeout(() => {
+    //         setLoading(false);
+    //     }, 3000);
+    // };
 
     const handleSourceChange = (source) => {
         setLoading(true);
 
         setTimeout(() => {
+            setError('')
             setLoading(false);
             setSelectedSource(source);
         }, 1000);
