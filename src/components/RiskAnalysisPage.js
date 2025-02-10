@@ -597,7 +597,7 @@ const CryptoTransactionAnalysis = ({ data }) => {
                                                     <div className="text-sm space-y-2">
                                                         <div className="flex items-center justify-between">
                                                             <span className="text-gray-400 text-sm">Address:</span>
-                                                            <code className="bg-gray-100 px-2 py-1 rounded text-xs">{level.beneficiary_details[0].beneficiary_address}</code>
+                                                            <code className="bg-gray-100 px-2 py-1 rounded text-xs break-all overflow-hidden w-full ml-1">{level.beneficiary_details[0].beneficiary_address}</code>
                                                         </div>
                                                         <div className="flex items-center justify-between">
                                                             <span className="text-gray-400 text-sm">Amount:</span>
@@ -623,7 +623,7 @@ const CryptoTransactionAnalysis = ({ data }) => {
                                                     <div className="text-sm space-y-2">
                                                         <div className="flex items-center justify-between">
                                                             <span className="text-gray-400 text-sm">Address:</span>
-                                                            <code className="bg-gray-100 px-2 py-1 rounded text-xs">{level.payer_details[0].payer_address}</code>
+                                                            <code className="bg-gray-100 px-2 py-1 rounded text-xs break-all overflow-hidden w-full ml-1">{level.payer_details[0].payer_address}</code>
                                                         </div>
                                                         <div className="flex items-center justify-between">
                                                             <span className="text-gray-400 text-sm">Amount:</span>
@@ -652,7 +652,7 @@ const CryptoTransactionAnalysis = ({ data }) => {
                                                             <div>
                                                                 <span className="text-gray-400 text-sm">Address</span>
                                                                 <div className="flex items-center space-x-2 mt-1">
-                                                                    <code className="text-sm text-white">{beneficiary.beneficiary_address}</code>
+                                                                    <code className="text-sm text-white break-all overflow-hidden w-full">{beneficiary.beneficiary_address}</code>
                                                                     <button className="text-custom hover:text-custom/80 !rounded-button">
                                                                         <i className="far fa-copy"></i>
                                                                     </button>
@@ -687,7 +687,7 @@ const CryptoTransactionAnalysis = ({ data }) => {
                                                             <div>
                                                                 <span className="text-gray-400 text-sm">Address</span>
                                                                 <div className="flex items-center space-x-2 mt-1">
-                                                                    <code className="text-sm text-white">{payer.payer_address}</code>
+                                                                    <code className="text-sm text-white break-all overflow-hidden w-full">{payer.payer_address}</code>
                                                                     <button className="text-custom hover:text-custom/80 !rounded-button">
                                                                         <i className="far fa-copy"></i>
                                                                     </button>
